@@ -12,6 +12,12 @@ jobs:
         run: |
           echo "${{ toJson(github.event.client_payload) }}"
 
+      - name: Login to GitHub Docker Registry
+        run: docker login docker.pkg.github.com --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ github.actor }}
+          DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Simulate a deployment
         run: |
           docker run --rm -e FOOBAR='${{ github.event.client_payload.foobar }}' \
