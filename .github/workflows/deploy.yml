@@ -1,0 +1,19 @@
+name: Deploy application
+
+on:
+  repository_dispatch:
+    types: [deploy]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print repository_dispatch payload
+        run: |
+          echo "${{ toJson(github.event.client_payload) }}"
+
+      - uses: Simulate a deployment by running the application using the config values passed in the payload.
+        run: |
+          # docker run --rm -it docker.pkg.github.com/edtan/sandbox-cicd/sandbox:3
+          docker run --rm -it -e VERSION=${{ github.event.client_payload.version }} \
+            ${{ github.event.client_payload.image_artifact }}
