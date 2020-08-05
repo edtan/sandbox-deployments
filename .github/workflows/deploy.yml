@@ -15,5 +15,5 @@ jobs:
       - uses: Simulate a deployment by running the application using the config values passed in the payload.
         run: |
           # docker run --rm -it docker.pkg.github.com/edtan/sandbox-cicd/sandbox:3
-          docker run --rm -it -e VERSION=${{ github.event.client_payload.version }} \
+          docker run --rm -it -e FOOBAR=${{ github.event.client_payload.foobar }} \
             ${{ github.event.client_payload.image_artifact }}
