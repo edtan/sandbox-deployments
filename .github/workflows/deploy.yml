@@ -12,7 +12,7 @@ jobs:
         run: |
           echo "${{ toJson(github.event.client_payload) }}"
 
-      - uses: Simulate a deployment by running the application using the config values passed in the payload.
+      - name: Simulate a deployment
         run: |
           # docker run --rm -it docker.pkg.github.com/edtan/sandbox-cicd/sandbox:3
           docker run --rm -it -e FOOBAR=${{ github.event.client_payload.foobar }} \
