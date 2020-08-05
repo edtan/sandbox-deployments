@@ -14,6 +14,5 @@ jobs:
 
       - name: Simulate a deployment
         run: |
-          # docker run --rm -it docker.pkg.github.com/edtan/sandbox-cicd/sandbox:3
-          docker run --rm -it -e FOOBAR=${{ github.event.client_payload.foobar }} \
+          docker run --rm -e FOOBAR=${{ github.event.client_payload.foobar }} \
             ${{ github.event.client_payload.image_artifact }}
