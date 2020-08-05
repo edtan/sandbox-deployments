@@ -20,5 +20,5 @@ jobs:
 
       - name: Simulate a deployment
         run: |
-          docker run --rm -e FOOBAR='${{ github.event.client_payload.foobar }}' \
+          docker run --rm -e foobar='${{ github.event.client_payload.foobar }}' \
             ${{ github.event.client_payload.image_artifact }}
