@@ -16,8 +16,13 @@ jobs:
 
       - name: Create environment manifest
         run: |
-          mkdir -p ${{ github.event.client_payload.environment_subdir }}
-          echo "${{ github.event.client_payload.artifact_url }}" > ${{ github.event.client_payload.environment_subdir }}/deployment.txt
+          if [ -n "${{ github.event.client_payload.environment_subdir }}" ];
+          then
+            mkdir -p ${{ github.event.client_payload.environment_subdir }}
+            echo "${{ github.event.client_payload.artifact_url }}" > ${{ github.event.client_payload.environment_subdir }}/deployment.txt
+          else
+            echo "${{ github.event.client_payload.artifact_url }}" > deployment.txt
+          fi
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
