@@ -1,1 +1,1 @@
-docker.pkg.github.com/edtan/sandbox-cicd/sandbox:master-3.1.2
+docker.pkg.github.com/edtan/sandbox-cicd/sandbox:master-3.2.0
