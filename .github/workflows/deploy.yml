@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: "repo_dispatch_params|${{ github.event.client_payload.deployment_id }}"
+      - name: "cwi_workflow_id=${{ github.event.client_payload.cwi_workflow_id }}"
         run: |
           echo "${{ toJson(github.event.client_payload) }}"
+
+      - uses: actions/checkout@v2
 
       - name: Create environment manifest
         run: |
